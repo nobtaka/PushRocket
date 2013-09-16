@@ -2,7 +2,7 @@
 
 .PHONY: all build archive testflight 
 PROJECT ?= PushRocket.xcworkspace
-SIGN ?= iOS Developer
+SIGN ?= iPhone Developer: Nobtaka Nukui (AD7CRNTMXX)
 SCHEME ?= PushRocket
 MOBILEPROVISION ?= provisionings/$(SCHEME).mobileprovision
 DISTRIBUTION_LIST ?= PushRocket Testers
