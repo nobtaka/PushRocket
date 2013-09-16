@@ -13,9 +13,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"application didFinishLaunchingWithOptions");
-        
-    // Override point for customization after application launch.
+    LoggerSetViewerHost(NULL, (CFStringRef)@"MosbprLogger", (UInt32)57088);
+    LoggerSetOptions(NULL, kLoggerOption_BufferLogsUntilConnection |
+                           kLoggerOption_UseSSL |
+                           kLoggerOption_BrowseBonjour);
+
+    XLog(@"app", XLOG_TRACE, @"application didFinishLaunchingWithOptions");
+    
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound)];
     
     return YES;
@@ -55,16 +59,16 @@
     NSURL *serverURL = [NSURL URLWithString:@"http://fast-sea-8622.herokuapp.com/"];
     Orbiter *orbiter = [[Orbiter alloc] initWithBaseURL:serverURL credential:nil];
     [orbiter registerDeviceToken:deviceToken withAlias:nil success:^(id responseObject) {
-        NSLog(@"Registration Success: %@", responseObject);
+        XLog(@"app", XLOG_TRACE, @"Registration Success: %@", responseObject);
     } failure:^(NSError *error) {
-        NSLog(@"Registration Error: %@", error);
+        XLog(@"app", XLOG_ERROR, @"Registration Error: %@", error);
     }];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"application didFailToRegisterForRemoteNotificationsWithError");
-    NSLog(@"Registration Error: %@", error);
+    XLog(@"app", XLOG_TRACE, @"application didFailToRegisterForRemoteNotificationsWithError");
+    XLog(@"app", XLOG_ERROR, @"Registration Error: %@", error);
 }
 
 

@@ -18,7 +18,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    XLog(@"view", XLOG_INFO, @"First viewDidLoad");
 }
+
 
 - (void)didReceiveMemoryWarning
 {

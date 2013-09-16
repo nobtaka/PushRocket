@@ -13,10 +13,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "LoggerClient.h"
 #endif
 
 #ifdef DEBUG
-    #import "LoggerClient.h"
     #define XLOG_FATAL   0
     #define XLOG_ERROR   1
     #define XLOG_WARNING 2
@@ -33,3 +33,4 @@
     #define XLogImage(...)    do{}while(0)
     #define XLogMarker(...)   do{}while(0)
 #endif
+
