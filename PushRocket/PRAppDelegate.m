@@ -7,12 +7,14 @@
 //
 
 #import "PRAppDelegate.h"
+#import "Orbiter.h"
 
 @implementation PRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound)];
     return YES;
 }
 							
@@ -41,6 +43,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSURL *serverURL = [NSURL URLWithString:@"http://fast-sea-8622.herokuapp.com/"];
+    Orbiter *orbiter = [[Orbiter alloc] initWithBaseURL:serverURL credential:nil];
+    [orbiter registerDeviceToken:deviceToken withAlias:nil success:^(id responseObject) {
+        NSLog(@"Registration Success: %@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"Registration Error: %@", error);
+    }];
 }
 
 @end
