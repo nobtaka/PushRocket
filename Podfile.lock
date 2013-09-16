@@ -1,0 +1,17 @@
+PODS:
+  - AFNetworking (2.0.0-RC2):
+    - AFNetworking/Core
+    - AFNetworking/UIKit+AFNetworking
+  - AFNetworking/Core (2.0.0-RC2)
+  - AFNetworking/UIKit+AFNetworking (2.0.0-RC2)
+  - Orbiter (0.0.3):
+    - AFNetworking (>= 0.9)
+
+DEPENDENCIES:
+  - Orbiter (~> 0.0.3)
+
+SPEC CHECKSUMS:
+  AFNetworking: 6b19d8a0793f342d8c879cd0af9d7488e54addcf
+  Orbiter: 236905182d8b9f935c19b6ed190e50bebc4b1331
+
+COCOAPODS: 0.24.0
