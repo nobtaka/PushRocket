@@ -14,3 +14,22 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifdef DEBUG
+    #import "LoggerClient.h"
+    #define XLOG_FATAL   0
+    #define XLOG_ERROR   1
+    #define XLOG_WARNING 2
+    #define XLOG_INFO    3
+    #define XLOG_DEBUG   4
+    #define XLOG_TRACE   5
+    #define XLog(tag,level,...)            LogMessageF  (__FILE__,__LINE__,__FUNCTION__,tag,level,__VA_ARGS__)
+    #define XLogData(tag,level,w,h,data)   LogDataF     (__FILE__,__LINE__,__FUNCTION__,tag,level,    data)
+    #define XLogImage(tag,level,w,h,data)  LogImageDataF(__FILE__,__LINE__,__FUNCTION__,tag,level,w,h,data)
+    #define XLogMarker(text)               LogMarker(text)
+#else
+    #define XLog(...)         do{}while(0)
+    #define XLogData(...)     do{}while(0)
+    #define XLogImage(...)    do{}while(0)
+    #define XLogMarker(...)   do{}while(0)
+#endif
