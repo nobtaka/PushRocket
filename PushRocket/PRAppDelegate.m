@@ -51,7 +51,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSLog(@"application didRegisterForRemoteNotificationsWithDeviceToken");
-
+    
     NSURL *serverURL = [NSURL URLWithString:@"http://fast-sea-8622.herokuapp.com/"];
     Orbiter *orbiter = [[Orbiter alloc] initWithBaseURL:serverURL credential:nil];
     [orbiter registerDeviceToken:deviceToken withAlias:nil success:^(id responseObject) {
@@ -60,5 +60,12 @@
         NSLog(@"Registration Error: %@", error);
     }];
 }
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"application didFailToRegisterForRemoteNotificationsWithError");
+    NSLog(@"Registration Error: %@", error);
+}
+
 
 @end
