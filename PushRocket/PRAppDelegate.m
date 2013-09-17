@@ -56,7 +56,7 @@
 {
     NSLog(@"application didRegisterForRemoteNotificationsWithDeviceToken");
     
-    NSURL *serverURL = [NSURL URLWithString:@"http://fast-sea-8622.herokuapp.com/"];
+    NSURL *serverURL = [NSURL URLWithString:@"http://fast-sea-8622.herokuapp.com/push_notification"];
     Orbiter *orbiter = [[Orbiter alloc] initWithBaseURL:serverURL credential:nil];
     [orbiter registerDeviceToken:deviceToken withAlias:nil success:^(id responseObject) {
         XLog(@"app", XLOG_TRACE, @"Registration Success: %@", responseObject);
